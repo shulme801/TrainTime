@@ -1,0 +1,98 @@
+
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: teal;
+
+    }
+
+    .myButton {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        max-width: 220px;
+     
+    }
+
+    .myFooter {
+
+    }
+
+    .myTinyImage {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 0px;
+        vertical-align: text-top;
+    }
+    .myCard {
+        min-height: 450px;
+    }
+
+    .myCardContent {
+        padding:15px !important;
+    }
+
+    #mySignature {
+        font-size: 1.1em;
+    }
+
+    /* media queries for responsive text in footer*/
+
+    /*phone only*/
+    @media only screen and (max-width: 599px) {
+        #mySignature {
+            font-size: .5em;
+            margin-bottom: 0px;
+
+        }
+        .myCopyright {
+            min-height: 20px !important;
+            position: relative;
+            top: 10px;
+        }
+        .myTinyImage {
+            display: none;
+        }
+        .myFooter{
+            height: 75px;
+            min-height: 0px !important;
+        }
+        .myCard {
+            min-height: 300px;
+        }
+
+    }
+
+    /*tablets, desktop*/
+    @media only screen and (min-width: 1024px) {
+        
+
+        #mySignature {
+        font-size: 1.1em;
+         }
+
+        .myCopyright {
+            min-height: 20px !important;
+            /*position: relative;
+            top: 10px;*/
+        }
+        .myTinyImage {
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 0px;
+            vertical-align: text-top;
+        }
+        .myFooter{
+            height: 75px;
+            min-height: 36px !important;
+        }
+
+        .myCard {
+            min-height: 730px;
+        }
+
+    }

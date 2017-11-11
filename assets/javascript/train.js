@@ -27,17 +27,21 @@ function convertTrainTime (firstTrain,trainFrequency) {
   var nextTrain;
   var arrivalTime;
   var convertedTimes=[];
+  var today = moment().isoWeekday();
+
+  
+
 
   firstTrainConverted = moment(firstTrain,"hh:mm").subtract(1,"years");
   // console.log("firstTrainConverted time "+firstTrainConverted);
-  currentTime = moment();
-  // console.log("currentTime "+currentTime);
+  
+  console.log("currentTime "+currentTime);
   diffTime = moment().diff(moment(firstTrainConverted), "minutes");
   // console.log("diff time is "+diffTime);
   tRemainder = diffTime%trainFrequency;
   minutesAway = trainFrequency-tRemainder;
   nextTrain = moment().add(minutesAway,"minutes");
-  arrivalTime= moment(nextTrain).format("hh:mm");
+  arrivalTime= moment(nextTrain).format("hh:mm A");
   convertedTimes.push(arrivalTime);
   convertedTimes.push(minutesAway);
   console.log("convertedTimes is "+convertedTimes);
@@ -62,6 +66,9 @@ function outputOneRow(row) {
       convertedTimes = convertTrainTime(row.firstTrain,row.trainFrequency); //Get next arrival and minutes away
       minutesAway = convertedTimes.pop();
       nextArrival = convertedTimes.pop();
+
+      console.log("For "+row.trainName+" next arrival is "+nextArrival);
+      console.log("For "+row.trainName+" minutes away is "+minutesAway);
 
       // Build a new train schedule table row
       trainNum = "trainNum"+trainCount; 

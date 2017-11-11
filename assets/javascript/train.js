@@ -44,13 +44,7 @@ function convertTrainTime (firstTrain,trainFrequency) {
   return(convertedTimes);
 }
 
-function updateTrainSchedule(newTrainSchedule) {
 
-  event.preventDefault(); // Don't reset the page!
-
-  newTrainSchedule.forEach(addUIrow);
-
-}
 
 function outputOneRow(row) {
 
@@ -64,12 +58,6 @@ function outputOneRow(row) {
       var minutesAway;
       var tMins;
       var tNext;
-
-      // console.log("Next Train");
-      // console.log(row.trainName);
-      // console.log(row.trainDestination);
-      // console.log(row.firstTrain);
-      // console.log(row.trainFrequency);
 
       convertedTimes = convertTrainTime(row.firstTrain,row.trainFrequency); //Get next arrival and minutes away
       minutesAway = convertedTimes.pop();
@@ -93,7 +81,11 @@ function outputOneRow(row) {
     }
 
 
+    $("#resetTrain").on("click", function(event){
+      console.log("resetting form");
+      document.getElementById("trainForm").reset();
 
+    })
     
     
     $("#addTrain").on("click", function(event) {
@@ -141,36 +133,7 @@ function outputOneRow(row) {
         trainSchedule.forEach(outputOneRow);
     });
 
-    // database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-    //   // storing the snapshot.val() in a variable for convenience
-    //   var sv = snapshot.val();
-    //   trainCount++;
-
-    //   // Console.loging the last train's data
-    //   console.log(sv.trainName);
-    //   console.log(sv.trainDestination);
-    //   console.log(sv.firstTrain);
-    //   console.log(sv.trainFrequency);
-    //   console.log(trainCount);
-
-    //   // Build a new train schedule table row
-    //   var trainNum = "trainNum"+trainCount; 
     
-    //   var tName   = "<td>"+sv.trainName+"</td>";
-    //   var tDest   = "<td>"+sv.trainDestination+"</td>";
-    //   var tFirst  = "<td>"+sv.firstTrain+"</td>";
-    //   var tFreq   = "<td>"+sv.trainFrequency+"</td>";
-     
-    //   var tRow    = $("<tr>"+tName+tDest+tFirst+tFreq+"</tr>");
-    //   tRow.attr("id",trainNum);
-      
-    //   // And write it out!
-    //   $("#trains").append(tRow);
-      
-    //   // Handle the errors
-    // }, function(errorObject) {
-    //   console.log("Errors handled: " + errorObject.code);
-    // });
 
     
 });

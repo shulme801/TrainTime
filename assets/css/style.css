@@ -8,7 +8,13 @@
 
     h1, h2, h3, h4, h5, h6 {
         color: teal;
+        margin-top: 0px !important;
+        padding-top: 15px !important;
+    }
 
+    .smallH6 {
+        font-size: 1.0rem;
+        margin-left: 20px;
     }
 
     .nav-center ul {
@@ -46,9 +52,15 @@
         padding:15px !important;
     }
 
+    .myNavWrapper {
+        margin-top: 0px !important;
+    }
+
     #mySignature {
         font-size: 1.1em;
     }
+
+
 
     /* media queries for responsive text in footer*/
 

@@ -11,6 +11,16 @@
 
     }
 
+    .nav-center ul {
+        text-align: center;
+    }
+    .nav-center ul li {
+        display: inline;
+        float: none;
+    }
+    .nav-center ul li a {
+        display: inline-block;
+    }
     .myButton {
         margin-right: 2px;
         margin-bottom: 2px;
@@ -19,7 +29,7 @@
     }
 
     .myFooter {
-
+        width: 100%;
     }
 
     .myTinyImage {
@@ -48,6 +58,9 @@
             font-size: .5em;
             margin-bottom: 0px;
 
+        }
+        .myLogo {
+            font-size: 1.5em !important;
         }
         .myCopyright {
             min-height: 20px !important;

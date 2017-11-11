@@ -21,9 +21,9 @@
 
     <!-- Ajax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    
+
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 
     <!-- Moment.js Reference -->
     <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
@@ -39,82 +39,127 @@
 
   <body>
 
-    <!-- Employee Tracker -->
-    <div class="container">
-
-      <!-- Jumbotron -->
-      <div class="jumbotron" style="background-color: black; color: white">
-        <h1 class="text-center">Employee Data Management</h1>
-        <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+    <!-- Standard page header -->
+    <header>
+      <div class="container">
+        <nav class="grey lighten-3 nav-center">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo teal-text myLogo">It's TrainTime!</a>
+            <ul id="nav-mobile" class="right hide-on-small-only">
+              <li><a href="https://shulme801.github.io/Bootstrap-Portfolio/"><span class="teal-text">Steve Hulme</span></a></li>
+            </ul>
+          </div>
+        </nav>
+        <nav class="grey lighten-2 flat hide-on-med-and-down">
+           <div class="nav-wrapper">
+             <span><h5 class="teal-text"><em>There is no train I would not take/No matter where it's going</em></h5></span>
+           </div>
+        </nav>
       </div>
+    </header>
+        
 
+    <!-- The table that contains the Current Train Schedule -->
+    <div class="container" id="trainSchedule">
       <div class="row">
+        <div class="col s12">
+          <span class="card-title">Current Train Schedule</span>
+          <table class="bordered striped responsive-table">
+            <thead>
+              <tr>
+                  <th>Train Name</th>
+                  <th>Destination</th>
+                  <th>Frequency (min)</th>
+                  <th>Next Arrival</th>
+                  <th>Minutes Away</th>
+              </tr>
+            </thead>
 
-        <div class="col-lg-12">
-
-        <!-- Current Employees-->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title"><strong>Current Employees</strong></h3>
-            </div>
-            <div class="panel-body">
-              <table class="table table-hover" id='employee-table'>
-                <thead>
-                  <tr>
-                    <th>Employee Name</th>
-                    <th>Role</th>
-                    <th>Start Date</th>
-                    <th>Months Worked</th>
-                    <th>Monthly Rate ($)</th>
-                    <th>Total Billed ($)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Add Employee  -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title"><strong>Add Employee</strong></h3>
-            </div>
-            <div class="panel-body">
-
-              <!-- Entry Form -->
-              <form>
-                <div class="form-group">
-                  <label for="employee-name-input">Employee Name</label>
-                  <input class="form-control" id="employee-name-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="role-input">Role</label>
-                  <input class="form-control" id="role-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="start-input">Start Date (DD/MM/YY - ex: 01/01/89)</label>
-                  <input class="form-control" id="start-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="rate-input">Monthly Rate</label>
-                  <input class="form-control" id="rate-input" type="text">
-                </div>
-                <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
-              </form>
-
-            </div>
-
-          </div>
-
+            <tbody id="trains">
+              <!-- <tr id="trainNum0">
+                <td>Trenton Express</td>
+                <td>Trenton</td>
+                <td>25</td>
+                <td>05:35pm</td>
+                <td>10</td>
+              </tr>
+              <tr id="trainNum1">
+                <td>Oregon Trail</td>
+                <td>Salem, Oregon</td>
+                <td>15</td>
+                <td>01:39pm</td>
+                <td>23</td>
+              </tr> -->
+              
+            </tbody>
+          </table>
         </div>
-
       </div>
-
     </div>
 
-    <!-- JavaScript -->
-    <script src="timesheetLogic.js"></script>
+
+
+    <!-- The Add Train Form -->
+    
+    <div class="container">
+    	<div class="row">
+    		<div class="col s12">
+    			<span class="card-title">Add A Train</span>
+    	    		<div class="input-field col s12">
+    	    			<input placeholder="Train Name" id="trainName" type="text" class="validate">
+    	    			<label for="trainName">Train Name</label>
+    	    		</div>
+    	    		<div class="input-field col s12">
+    	    			<input placeholder="Destination" id="trainDestination" type="text" class="validate">
+    	    			<label for="trainDestination">Destination</label>
+    	    		</div>
+    	    		<div class="input-field col s12">
+    	    			<input placeholder="firstTrain" id="firstTrain" type="text" class="validate">
+    	    			<label for="firstTrain">First Train (hh:mm Military Time)</label>
+    	    		</div>
+    	    		<div class="input-field col s12">
+    	    			<input placeholder="trainFrequency" id="trainFrequency" type="text" class="validate">
+    	    			<label for="trainFrequency">Frequency (min)</label>
+    	    		</div>
+    	    </div>
+    	<div class="row">
+    		<div class="col s12">
+    			<row>
+    				<button id="addTrain" class="btn waves-effect waves-light" type="submit" name="action" value="submit">Add Train<i class="material-icons right">send</i>
+    				</button>
+    			</row>
+    			<row>
+    				<button id="resetTrain" class="btn waves-effect waves-light" type="reset" name="action" value="resetTrain">Reset Train<i class="material-icons right">clear</i>
+    				</button>
+    			</row>
+    		</div>
+    	</div>
+    </div>
+    	    		
+
+    <!-- Standard page footer -->
+    <footer class="container page-footer grey lighten-3 teal-text z-depth-1 myFooter">
+    <div class="nav-wrapper">
+          <div class="footer-copyright grey lighten-3 teal-text myCopyright">
+         
+            <span id="mySignature"> © 2017  Steve Hulme/<img src="./assets/images/Pilgrim_Logo_grey_background_tiny.png" class="myTinyImage">Pilgrim Marine Consultants</span>
+            
+            
+          </div>
+    </div>
+  </footer>
+    
+  <!-- jQuery imports -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <!-- Compiled and minified Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <!-- moment.js -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  <!-- Train Time!  JavaScript -->
+  <script src="./assets/javascript/train.js"></script>
 
   </body>
 
